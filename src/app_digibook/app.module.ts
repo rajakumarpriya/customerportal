@@ -25,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PopupComponent } from './popup/popup.component';
 import { MyinfoComponent } from './myinfo/myinfo.component';
+import { DatePipe } from '@angular/common';
 
 // import { IgxDatePickerModule } from "igniteui-angular";
 // import { DatepickerSample4Component } from "./datepicker-sample-4/datepicker-sample-4.component";
@@ -54,7 +55,7 @@ import { MyinfoComponent } from './myinfo/myinfo.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders,DatePipe],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { TokenStorageService } from '../_services/token-storage.service';
+import { getLocaleDateFormat } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../buybook';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-myinfo',
@@ -8,6 +13,8 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./myinfo.component.css']
 })
 export class MyinfoComponent implements OnInit {
+  currentUser: any;
+ // book: CustomerRequest[] = [];
   form: any = {
     // username: null,
     // email: null,
@@ -19,9 +26,13 @@ export class MyinfoComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) { }
-
+  constructor(private authService: AuthService,private token: TokenStorageService
+    ,private _http:HttpClient) { }
+   // postsObservable: Observable<User[]>;
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
+    this.getData(this.currentUser.id);
+    //this.postsObservable = this.authService.getUpdateData(this.currentUser.id);
   }
 
   onSubmit(): void {
@@ -45,5 +56,51 @@ export class MyinfoComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
+    // this.authService.getUpdateData(this.currentUser.id).subscribe(
+    //   data => {
+    //     console.log(data);
+    //     this.isSuccessful = true;
+    //     this.isSignUpFailed = false;
+    //   },
+    //   err => {
+    //     this.errorMessage = err.error.message;
+    //     this.isSignUpFailed = true;
+    //   }
+    // );
+  //   getData(id:any){
+  //     console.log(id+"id");
+  //     this.authService.getUpdateData(id).subscribe({
+  //       next: (res:any)=>{
+  //         console.log("movie id is : "+res);
+  //         //this.fetchAllMovies();
+  //        // this.book = res;
+  //       }
+  //     })
+  // }
+ // this.fetchAllMovies(this.currentUser.id);
+const test= this.getUpdateData(this.currentUser.id);
+console.log(test.toString+"1233");
   }
+  public getUpdateData(id:any){
+    return this._http.get("http://localhost:9028/api/v1/requests/searchtitle/"+id);
+  }
+  // public fetchAllMovies(id:any){
+
+  //   this.authService.getUpdateData(id).pipe(map(((res: any[]): void=> { 
+
+  //     this.toastr.success('Inserted successfully', 'Employee Details'); 
+      
+  //     this.resetForm(form); this.service.refreshList();
+    
+  //   }
+  // }
+
+ 
+ public getData(id:any){
+         console.log(id+"id");
+         //this.authService.getUpdateData
+        return this._http.get("http://localhost:9028/api/v1/requests/searchtitle/"+id);
+    
+     }
+ 
 }

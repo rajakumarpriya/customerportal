@@ -29,7 +29,7 @@ export class CompBookComponent implements OnInit {
     fetchAllMovies(){
       this.bookservice.getBookList().subscribe({
         next: (res:any)=>{
-          console.log(res)
+          console.log(res.completedDate+"tesrte")
           this.book = res;
         },
         error: (err:any)=>{

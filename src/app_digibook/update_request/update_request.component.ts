@@ -47,6 +47,8 @@ export class UpdateRequestComponent implements OnInit {
       this.fetchSingleReq();
       this.date1();
       console.log("after getAll")
+      //this.test.completedDate.get('requestdate').patchValue(this.formatDate(new Date()));
+
       // this.student = new FormGroup({
       //   name: new FormControl()
       // })
@@ -147,20 +149,26 @@ export class UpdateRequestComponent implements OnInit {
       console.log(item.completedDate);
       this.router.navigate
     }
-    updateRequest(item:any,idx:any){
+    updateRequest(item:any,idx:any,idx1:any,idex2:any){
 
-       let book:CustomerRequest = {id: this.test.id,title:this.test.title,description:this.test.description,
+       let book:CustomerRequest = {id: this.test.id,title:this.test.title,description:idex2,
         status:idx,
-        completedDate:this.test.completedDate,comments:item }
-        console.log(book+"book"+this.test.status+"comments"+this.test+"122"+item);
+        completedDate:idx1,comments:item }
+        console.log(book+"book"+this.test.status+"comments"+this.test+"122"+item+"s"+idx1);
 
          this.bookservice.updateRequest(this.test.id,book).subscribe({
          next: (res:any)=>{
            console.log("movie id is : "+res.id);
-           //this.fetchAllMovies();
+          this.fetchAllMovies1();
            this.book = res;
          }
        })
+    }
+    fetchAllMovies1(){
+      this.test.description='';
+      this.test.completedDate='';
+      this.test.comments='';
+      this.test.status='';
     }
    
   }

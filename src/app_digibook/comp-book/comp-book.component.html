@@ -9,12 +9,45 @@
       <h2>ADD CUSTOMER REQUEST SERVICE</h2>
 <form>
 
-  
-    TITLE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="form-control" #title/><br/>
-    DESCRIPTION: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" #description /><br/>
-    STATUS: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" #status /><br/>
-    COMPLETEDDATE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" class="form-control" #completedDate /><br/>
-    COMMENTS: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" #comments /><br/>
+    <div class="form-group">
+        <label for="title">TITLE</label>
+     <input type="text" class="form-control" #title/>
+     <BR>
+    </div>
+    <div class="form-group">
+        <label for="title">DESCRIPTION</label>
+    <input type="text" class="form-control" #description />
+    <BR>
+    </div>
+    <!-- <div class="form-group">
+        <label for="title">STATUS</label>
+     <input type="text" class="form-control" #status />
+     <BR>
+    </div> -->
+    <div class="form-group">
+        <label for="status">STATUS</label>
+         <select class="form-control" name="status"
+      #status>  
+        <option>pending</option>  
+        <option>closed</option>
+        <option>reopened</option>
+    </select>  
+    <BR>
+       
+    <!-- <div class="alert-danger" *ngIf="status.errors && f.submitted">
+      <div *ngIf="  !status.hasError('required')">status is required</div>
+
+    </div> -->
+  </div>
+    <div class="form-group">
+        <label for="title">TARGET COMPLETED DATE</label>
+     <input type="date" class="form-control" #completedDate />
+     <BR>
+    </div>
+    <div class="form-group">
+        <label for="title">COMMENTS</label>
+    <input type="text" class="form-control" #comments />
+    <BR></div>
 
     <!-- <mat-form-field>
         <input matInput [matDatepicker] = "picker" placeholder = "Choose a date">
@@ -38,7 +71,7 @@
     <br>
     <br>
     <br>
-    STATUS: <select class="form-control" #statusval>  
+    STATUS <select class="form-control" #statusval>  
     <option disabled>Select Status</option> 
     <option>ALL</option>  
     <option>PENDING</option>  
@@ -46,12 +79,13 @@
     <option>COMPLETED</option>
 </select>  
 <br>
-<input type="button" value="SEARCH_STATUS" (click)="getSearchByStatus(statusval.value);"/>
+<input type="button" class = "btn btn-danger" value="SEARCH_STATUS" (click)="getSearchByStatus(statusval.value);"/>
     <!-- <input type="button" value="SEARCH_BOOK" (click)="getSearchByStatus(statusval.value);"/> -->
   <br>
-  TITLE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" #titleval /><br/>
-  <input type="button" value="SEARCH_TITLE" (click)="getSearchByTitle(titleval.value);"/>
-   
+  <br>
+  TITLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="form-control" #titleval /><br/>
+  <input type="button" class = "btn btn-danger" value="SEARCH_TITLE" (click)="getSearchByTitle(titleval.value);"/>
+  
    <!-- <input type="button" value="Update_BOOK" (click)="updateData(image.value,title.value,category.value,+price.value,auhtor.value,
     +auhtorid.value, publisher.value,published_date.value,chapter.value,
     active_status.value);"/> -->
@@ -73,7 +107,7 @@
             <td> TITLE </td>
             <td>  DESCRIPTION  </td>
             <td>  STATUS  </td>
-            <td>  COMPLETEDDATE  </td>
+            <td>  COMPLETEDDATE(YYYY-MM-DD)  </td>
             <td>  COMMENTS  </td>  
             <td>  ACTIONS </td>
         </tr>
@@ -85,14 +119,15 @@
             <td> {{ requestval.description }} </td>
             <td> {{ requestval.status }}</td>
             <td> {{ requestval.completedDate }} </td>
+           
             <td> {{ requestval.comments }} </td>
             <td>
                 
                 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button> -->
                 <button (click)="update(requestval,i)" class = "btn btn-success" 
-                style="margin-left: 10px"> update Request</button>
+                style="margin-left: 10px"> UPDATE</button>
                 <button (click) = "deleteRequest(requestval.id)" class = "btn btn-danger" 
-                style="margin-left: 10px"> Delete</button>
+                style="margin-left: 10px"> DELETE</button>
                
                 <!-- <input type="button" value="Update_BOOK" (click)="updateData(requestval.id);"/> -->
             </td>

@@ -15,22 +15,30 @@
     
     
       <div class="form-group">
-    TITLE:  <input type="text" #title disabled class="form-control" value=" {{ this.test.title }}"/><br/>
+    TITLE <input type="text" #title disabled class="form-control" value="{{ this.test.title }}"/><br/>
     </div>
     <div class="form-group">
-    DESCRIPTION: <input type="text"  #description  class="form-control" value=" {{ this.test.description }}"/><br/>
+    DESCRIPTION <input type="text"  #description  class="form-control" value="{{ this.test.description }}"/><br/>
     </div>
     <div class="form-group">
-    STATUS: <input type="text" #status  class="form-control" value=" {{ this.test.status }}"/><br/>
+    <!-- STATUS <input type="text" #status  class="form-control" value="{{ this.test.status }}"/><br/> -->
+    STATUS
+    <select class="form-control" #status>  
+        <option disabled>Select Status</option> 
+        <option>PENDING</option>  
+        <option>CLOSED</option>
+        <option>COMPLETED</option>
+        <option selected>{{ this.test.status }}</option>
+    </select>  
+    <br/>
 </div>
 <div class="form-group">
-   TARGET COMPLETED DATE: <input type="text" #completedDate class="form-control" value=" {{ this.test.completedDate }}" /><br/>
+   TARGET COMPLETED DATE <input type="date" #completedDate class="form-control" value="{{this.test.completedDate}}" /><br/>
 </div>
     <div class="form-group">
-    COMMENTS: <input type="text" #comments class="form-control" value=" {{ this.test.comments }}" /><br/>
+    COMMENTS <input type="text" #comments class="form-control" value="{{ this.test.comments}}" /><br/>
 </div>
-    <input type="button"  class="btn btn-primary btn-block" value="UPDATE REQUEST" (click)="updateRequest(comments.value,status.value);"/>
-    <br>
+    <input type="button"  class="btn btn-primary btn-block" value="UPDATE" (click)="updateRequest(comments.value,status.value,completedDate.value,description.value);"/>
     <input type="button"  class="btn btn-danger btn-block" value="BACK" (click)="close();"/>
     <!-- <br>
     status: <select class="form-control" #statusval>  

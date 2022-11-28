@@ -5,6 +5,7 @@ import { CustomerRequest } from 'src/app_digibook/buybook';
 import { BookService } from 'src/app_digibook/comp-book/book.service';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../popup/popup.component';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -15,13 +16,17 @@ import { PopupComponent } from '../popup/popup.component';
 export class CompBookComponent implements OnInit {
 
   book: CustomerRequest[] = [];
+ s1:any;
+ s2:any;
+ id1:any;
   //student:FormGroup|any;
 
   constructor(private bookservice: BookService,
-    private router: Router,private modalService: NgbModal) { }
+    private router: Router,private modalService: NgbModal,private datepp:DatePipe) { }
 
     ngOnInit(): void {
       console.log("before getAll")
+      
       this.fetchAllMovies()
       console.log("after getAll")
       // this.student = new FormGroup({
@@ -33,7 +38,15 @@ export class CompBookComponent implements OnInit {
       this.bookservice.getBookList().subscribe({
         next: (res:any)=>{
           console.log(res)
+          console.log(res[0].completedDate+"tesrte");
+         console.log(this.datepp.transform(res.completedDate, 'yyyy/MM/dd'));
+         this.s2=res.id;
+
           this.book = res;
+          // this.book= [this.id1:this.s2,title:res.title,description:res.description,status:res.status,
+          //   completedDate:this.s1,comments:res.comments ];
+
+         
         },
         error: (err:any)=>{
           console.error(err)
@@ -46,10 +59,21 @@ export class CompBookComponent implements OnInit {
 
     //create(){
       save(title:string, description:string,status:string,
-        completedDate:string,comments:string ){
+        completedDate:string|any,comments:string ){
         // this.buybook.push({title: title, director: director, rating: rating});
+        // let datas=this.datepp.transform(completedDate,'dd-mm-yyyy');
+        // if(completedDate==null){
+        //   let datas=this.datepp.transform(completedDate,'dd-mm-yyyy');
+        // }else{
+        //   let datas=this.datepp.transform(completedDate,'dd-mm-yyyy');
+        // }
+        //var datePipe = new DatePipe("en-US");
+        completedDate = this.datepp.transform(completedDate, 'dd-MM-yyyy');
+       // this.completedDate=new Date();
+//let latest_date =this. datepipe. transform(this. date, ‘yyyy-MM-dd’);
+        //completedDate=;
+       // const completedDate: string = completedDate !== null ? completedDate : '';
 
-    
        let book:CustomerRequest = {id: 0,title:title,description:description,status:status,
         completedDate:completedDate,comments:comments }
    

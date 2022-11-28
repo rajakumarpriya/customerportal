@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     // email: null,
     // password: null
     firstName: null, lastName: null, address: null, state: null, country: null,password : null,
-    emailAddress: null, contactPreference : null, pan: null,contactNo:null,role:null,rolesval:null
+    emailAddress: null, contactPreference : null, pan: null,contactNo:null,role:null,rolesval:"data"
   };
   isSuccessful = false;
   isSignUpFailed = false;

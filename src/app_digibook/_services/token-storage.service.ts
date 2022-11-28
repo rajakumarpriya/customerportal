@@ -24,12 +24,24 @@ export class TokenStorageService {
 
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
+    console.log(JSON.stringify(user));
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
+    
     if (user) {
+      console.log(JSON.parse(user).id+"tesss1");
+      console.log(JSON.parse(user).username+"tesss1");
+      console.log(JSON.parse(user).email+"tesss1");
+      console.log(JSON.parse(user).firstName+"tesss1");
+      console.log(JSON.parse(user).password+"tesss1");
+  //     id=0 ;
+	//  ='';
+	//    ='';
+	//    ='';
+	//    roles='';
       return JSON.parse(user);
     }
 

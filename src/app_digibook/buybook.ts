@@ -9,12 +9,27 @@ export class BuyBook{
 }
 
 export class CustomerRequest{
+	
 	id=0 ;
 	title='';
 	description='';
 	status='';
 	completedDate='';
 	comments='';
+}
+
+export class UserUpdateInfo{
+	id=0 ;
+	firstName='';
+	lastName='';
+	address='';
+	state='';
+	country='';
+	pan='';
+	contactNo='';
+	emailaddress='';
+	contactPreference='';
+
 }
 export class Book{
 	id=0 ;

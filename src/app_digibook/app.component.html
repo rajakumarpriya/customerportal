@@ -30,29 +30,29 @@
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        <a href="/register" class="nav-link" routerLink="register">SIGN UP</a>
       </li>
      
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a href="/login" class="nav-link" routerLink="login">LOGIN</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        <a href="/profile" class="nav-link" routerLink="profile">MYINFO</a>
       </li>
       <li class="nav-item">
         <a href="/comp-book" class="nav-link"  routerLink="comp-book">SERVICE_REQUEST</a>
       </li>
       <li class="nav-item">
-        <a href="/dashboard" class="nav-link" routerLink="dashboard">dashboard</a>
+        <a href="/dashboard" class="nav-link" routerLink="dashboard">DASHBOARD</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="/myinfo" class="nav-link" routerLink="myinfo">myinfo</a>
-      </li>
+      </li> -->
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <a href class="nav-link" (click)="logout()">LOGOUT</a>
       </li>
     </ul>
   </nav>

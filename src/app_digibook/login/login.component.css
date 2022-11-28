@@ -7,10 +7,10 @@ label {
   max-width: 1000px !important;
   padding: 40px 40px;
 }
-.col-md-12 {
+/* .col-md-12 {
   margin-top: 50px;
   padding-top: 40px;
-}
+} */
 .card {
   background-color: #f7f7f7;
   padding: 20px 25px 30px;

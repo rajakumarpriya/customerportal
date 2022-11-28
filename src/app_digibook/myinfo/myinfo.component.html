@@ -5,7 +5,9 @@
       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
       class="profile-img-card"
     /> -->
+    
     <h2>CUSTOMER REGISTRATION</h2>
+    <div></div>
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -14,51 +16,23 @@
       novalidate>
       <!--1. firstName -->
       <div class="form-group">
-        <label for="firstName">firstName</label>
+        <label for="firstName">FIRSTNAME</label>
         <input
           type="text"
           class="form-control"
           name="firstName"
-          [(ngModel)]="form.firstName"
-          required
-          minlength="3"
-          maxlength="20"
-          #firstName="ngModel"
-        />
-
-        
-        <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
-          <div *ngIf="  !firstName.hasError('required')">firstName is required</div>
-          <!-- <div *ngIf="username.errors.minlength">
-            Username must be at least 3 characters
-          </div> -->
-          <div *ngIf = "firstName.hasError('minlength')" 
-          class = "alert alert-danger">
-            <span>firstName should contain 3 characters</span>
-          </div> 
-          <div *ngIf="firstName.hasError('maxlength')">
-            firstName must be at most 20 characters
-          </div>
-        </div>
+         value="{{ currentUser.firstName }}" />
       </div>
 
       <!-- 2.lastName -->
       <div class="form-group">
-        <label for="lastName">lastName</label>
+        <label for="lastName">LASTNAME</label>
         <input
           type="text"
           class="form-control"
           name="lastName"
-          [(ngModel)]="form.lastName"
-          required
-          minlength="3"
-          maxlength="20"
-          #lastName="ngModel"
+          value="{{ currentUser.lastName }}"
         />
-        <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
-          <div *ngIf="  !lastName.hasError('required')">lastName is required</div>
-
-        </div>
       </div>
 
        <!-- 3.ADDRESS -->
